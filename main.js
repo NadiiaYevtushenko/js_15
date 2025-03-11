@@ -28,7 +28,7 @@ const fetchData = (url) =>
     });
 
 const getMovies = (searchQuery) =>
-  from(fetchData(`http://www.omdbapi.com/?apikey=7db3a272&s=${searchQuery}`)).pipe(
+  from(fetchData(`https://www.omdbapi.com/?apikey=7db3a272&s=${searchQuery}`)).pipe(
     catchError((err) => {
       console.error("Error fetching movies:", err);
       return of([]);
