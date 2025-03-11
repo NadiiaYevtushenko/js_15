@@ -44,7 +44,7 @@ const addMoviesToList = ({ Poster: poster, Title: title, Year: year }) => {
   item.classList.add('movie');
 
   img.classList.add('movie_image');
-  img.src = /^(https?:\/\/)/i.test(poster) ? poster : 'img/no-image.png';
+  img.src = /^(https?:\/\/)/i.test(poster) ? poster : "pic/no_pic.jpg";
   img.alt = `${title} (${year})`;
   img.title = `${title} (${year})`;
 
@@ -63,24 +63,45 @@ const searchMovieStream$ = fromEvent(searchInput, 'input').pipe(
   filter((value) => value.length > 3),
   debounceTime(1000),
   distinctUntilChanged(),
-  tap(() => {
-    if (searchCheckbox.checked) {
-      moviesListElement.innerHTML = '';
-    }
-  }),
   tap((searchQuery) => console.log("Searching for:", searchQuery)),
   switchMap((searchQuery) => getMovies(searchQuery)),
   tap((movies) => {
-    moviesListElement.innerHTML = '';
     if (movies.length === 0) {
       const noResults = document.createElement('p');
-      noResults.textContent = 'No movies found.';
+      noResults.textContent = 'Нічого не знайдено.';
       noResults.classList.add('no-results');
-      moviesListElement.appendChild(noResults);
+      moviesListElement.prepend(noResults);
     } else {
-      movies.forEach(addMoviesToList);
+      movies.reverse().forEach((movie) => {
+        const movieElement = createMovieElement(movie);
+        moviesListElement.prepend(movieElement); 
+      });
     }
   })
 );
 
 searchMovieStream$.subscribe();
+
+// Функція створення елемента фільму
+const createMovieElement = ({ Poster: poster, Title: title, Year: year }) => {
+  const item = document.createElement('div');
+  const img = document.createElement('img');
+  const titleElement = document.createElement('h3');
+  const yearElement = document.createElement('p');
+
+  item.classList.add('movie');
+
+  img.classList.add('movie_image');
+  img.src = /^(https?:\/\/)/i.test(poster) ? poster : "pic/no_pic.jpg";
+  img.alt = `${title} (${year})`;
+  img.title = `${title} (${year})`;
+
+  titleElement.textContent = title;
+  titleElement.classList.add('movie_title');
+
+  yearElement.textContent = `Year: ${year}`;
+  yearElement.classList.add('movie_year');
+
+  item.append(img, titleElement, yearElement);
+  return item;
+};
