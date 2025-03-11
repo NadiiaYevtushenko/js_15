@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>App for Search Films</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>App for Search Films</h1>
+
+    <div class="search">
+      <div class="search__group search__group--input">
+        <label for="search" class="search__label-input">Search for films</label>
+        <input id="search" type="text" class="search__input" placeholder="What is the name of the film" />
+      </div>
+
+      <div class="search__group search__group--checkbox">
+        <input id="checkbox" type="checkbox" class="search__checkbox" />
+        <label for="checkbox" class="search__label-checkbox">Add films to the existing list</label>
+      </div>
+
+      <div class="movies" id="movies-list"></div>
+    </div>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.5.5/rxjs.umd.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

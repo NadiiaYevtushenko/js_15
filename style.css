@@ -1,0 +1,189 @@
+/* Загальні стилі */
+body {
+  font-family: 'Arial', sans-serif;
+  background: url('pic/pic.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #323030;
+  /* Резервний колір, якщо зображення не завантажиться */
+  color: #280505;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Контейнер */
+.container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок */
+h1 {
+  font-size: 32px;
+  color: #0077cc;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(0, 119, 204, 0.5);
+  margin-bottom: 20px;
+}
+
+/* Група пошуку */
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Пошукове поле */
+.search__group--input {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.search__label-input {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.search__input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #0077cc;
+  background-color: #fff;
+  color: #333;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.search__input:focus {
+  box-shadow: 0px 0px 5px 2px rgba(0, 119, 204, 0.5);
+}
+
+/* Кнопка пошуку */
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+/* Чекбокс */
+.search__group--checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.search__checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.search__label-checkbox {
+  font-size: 16px;
+  user-select: none;
+  color: #444;
+}
+
+/* Стилі для списку фільмів */
+.movies {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+/* Оформлення картки фільму */
+.movie {
+  background: #ffffff;
+  color: #333;
+  border-radius: 8px;
+  padding: 10px;
+  width: 220px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(0, 119, 204, 0.3);
+}
+
+/* Стилі для зображень */
+.movie img {
+  max-width: 100%;
+  border-radius: 5px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie:hover img {
+  transform: scale(1.05);
+}
+
+/* Стилі для тексту */
+.movie h3 {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #0077cc;
+}
+
+.movie p {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #666;
+}
+
+/* Повідомлення про відсутність результатів */
+.no-results {
+  font-size: 18px;
+  color: #cc0000;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Адаптація для мобільних */
+@media (max-width: 768px) {
+  .movies {
+    justify-content: space-around;
+  }
+
+  .movie {
+    width: 180px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}
